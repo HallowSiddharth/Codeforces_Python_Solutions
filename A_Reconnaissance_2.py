@@ -1,5 +1,5 @@
 n = int(input())
-lst = list(map(int, input().rstrip().split()))
+a = list(map(int, input().rstrip().split()))
 
 """
 Logic:
@@ -8,10 +8,15 @@ Logic:
 3. Incase it is lower, update the minimum distance and the answer and repeat
 """
 
-min_difference = abs(lst[0] - lst[-1])
-ans = [1,n]
-for i in range(1,n):
-    if abs(lst[i] - lst[i-1]) < min_difference:
-        ans = [i+1 , i]
-        min_difference = abs(lst[i] - lst[i-1])
-print(ans[0] , ans[1])
+min_difference = abs(a[0] - a[-1])
+p1 = 1
+p2 = n
+
+for i in range(1, n):
+    difference = abs(a[i] - a[i - 1])
+    if difference < min_difference:
+        min_difference = difference
+        p1 = i + 1
+        p2 = i
+
+print(p1, p2)

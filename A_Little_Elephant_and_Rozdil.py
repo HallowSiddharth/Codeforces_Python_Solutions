@@ -7,17 +7,19 @@ Logic
 
 n = int(input())
 lst = list(map(int, input().rstrip().split()))
-minimum = 0
-ans = None
+
+min_el = lst[0]
+# position value : output
+ans = 1
+
 for i in range(1, n):
-    if lst[i] < lst[minimum]:
-        minimum = i
-    # elif lst[i] == lst[minimum]:
-    #     print(lst[minimum])
-    #     print(lst[i])
-    #     print(i)
-    #     ans = "Still Rozdil"
-if lst.count(lst[minimum]) == 1:
-    print(minimum + 1)
-else:
-    print("Still Rozdil")
+    if lst[i] < min_el:
+        min_el = lst[i]
+        ans = i + 1
+    elif lst[i] == min_el:
+        # repition of minimum elements
+        ans = "Still Rozdil"
+    else:
+        continue
+
+print(ans)

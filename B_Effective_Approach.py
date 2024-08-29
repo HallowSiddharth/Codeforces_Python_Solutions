@@ -1,17 +1,22 @@
-n=int(input())
-lst=list(map(int,input().rstrip().split()))
-t=int(input())
-l2=list(map(int,input().rstrip().split()))
-d={'V':0,'P':0}
-d2={}
+n = int(input())
+lst = list(map(int, input().rstrip().split()))
+m = int(input())
+queries = list(map(int, input().rstrip().split()))
+d = {}
 for i in range(n):
-    if lst[i] in d:
-        d[lst[i]].append(i+1)
-    else:
-        d[lst[i]]=[i+1]
+    # element : index
+    d[lst[i]] = i
 
-for i in l2:
-    d['V']+=min(d[i])
-    d['P']+=n-max(d[i]) +1 
+vasya = 0
+petya = 0
 
-print(d['V'],d['P'])
+for q in queries:
+    index = d[q]
+    # vasya's index (no of comparisons)
+    v = d[q] + 1
+    # petya's index  (no of comparisons)
+    p = n - d[q]
+    vasya += v
+    petya += p
+
+print(vasya, petya)
