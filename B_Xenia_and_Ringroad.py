@@ -1,11 +1,18 @@
-n,m=list(map(int,input().rstrip().split()))
-lst=list(map(int,input().rstrip().split()))
-s=0
-for i in range(len(lst)-1):
-    if i==0:
-        s+=lst[i]-1
-    if lst[i]<=lst[i+1]:
-        s+=lst[i+1]-lst[i]
+n, m = list(map(int, input().rstrip().split()))
+# task list
+a = list(map(int, input().rstrip().split()))
+
+time_taken = 0
+
+# initially Xenia is at position 1
+time_taken += a[0] - 1
+
+for i in range(m - 1):
+    # if next element is greater than current element
+    if a[i + 1] >= a[i]:
+        time_taken += a[i + 1] - a[i]
+    # reset to start then from there (clockwise)
     else:
-        s+=n-lst[i] + lst[i+1]
-print(s)
+        time_taken += n - a[i] + a[i + 1]
+
+print(time_taken)
